@@ -588,7 +588,7 @@ const spyObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isInter
 sections.forEach(s=>spyObs.observe(s));
 const fadeObs=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);fadeObs.unobserve(e.target)}})},{threshold:0.1});
 document.querySelectorAll('.fade-up').forEach(el=>fadeObs.observe(el));
-function openArticle(title,url){document.getElementById('modal-title').textContent=title;document.getElementById('modal-link').href=url;document.getElementById('modal-iframe').src=url;document.getElementById('modal-overlay').classList.add('open');document.body.style.overflow='hidden'}
+function openArticle(title,url){window.open(url,'_blank','noopener')}
 function closeModal(){document.getElementById('modal-overlay').classList.remove('open');document.getElementById('modal-iframe').src='about:blank';document.body.style.overflow=''}
 function closeArticle(e){if(e.target===document.getElementById('modal-overlay'))closeModal()}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
